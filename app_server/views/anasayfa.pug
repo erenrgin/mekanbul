@@ -1,68 +1,26 @@
 extends layout
+include fonksiyonlar/yildiz
 block content
-  #banner.page-header
+  #banner.page-header 
     .row 
-      .col-lg-6
+      .col-lg-6 
         h1 
-          | MekanBul 
-          small &nbsp; Civardaki mekanları keşfet 
+          | #{sayfaBaslik.siteAd}
+          small &nbsp; #{sayfaBaslik.slogan}
   .row 
-    .row.list-group 
-    .col.xs-12.col-sm-12 
-      .col-xs-12.list-group-item
-        h4 
-          a(href="/mekan") Starbucks
-          small &nbsp;
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-        span.badge.pull-right.badge-default  2.1km
-        p.adress Centrum Garden
-        p 
-          span.label.label-warning Dünya Kahveleri
-          | &nbsp;
-          span.label.label-warning Kekler
-          | &nbsp;
-          span.label.label-warning Pastalar
-  .row 
-    .row.list-group 
-    .col.xs-12.col-sm-12 
-      .col-xs-12.list-group-item
-        h4 
-          a(href="/mekan") Popeyes
-          small &nbsp;
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-          span.glyphicon.glyphicon-star-empty
-        span.badge.pull-right.badge-default  0.4km
-        p.adress Iyaşpark AVM
-        p 
-          span.label.label-warning Tavuk
-          | &nbsp;
-          span.label.label-warning Atıştırmalıklar
-          | &nbsp;
-          span.label.label-warning Kampanyalar
-  .row 
-    .row.list-group 
-    .col.xs-12.col-sm-12 
-      .col-xs-12.list-group-item
-        h4 
-          a(href="/mekan") Usta Dönerci
-          small &nbsp;
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star
-          span.glyphicon.glyphicon-star-empty
-        span.badge.pull-right.badge-default  0.4km
-        p.adress Iyaşpark AVM
-        p 
-          span.label.label-warning Kebap
-          | &nbsp;
-          span.label.label-warning Türk Mutfağı
-          | &nbsp;
-          span.label.label-warning Döner
+    each mekan in mekanlar
+      .row.list-group 
+      .col-xs-12.col-sm-12 
+        .col-xs-12.list-group-item
+          h4 
+            a(href='/mekan') #{mekan.ad}
+            small &nbsp;
+            +puanOlustur(mekan.puan)
+          span.badge.pull-right.badge-default #{mekan.mesafe}
+          p.address #{mekan.adres}
+          p
+            each imkan in mekan.imkanlar
+              span.label.label-warning #{imkan}
+              | &nbsp;
+
+

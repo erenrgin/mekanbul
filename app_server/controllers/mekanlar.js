@@ -1,20 +1,77 @@
 var express = require("express");
 var router = express.Router();
 
-const anasayfa = function (req, res, next) {
-  res.render("anasayfa", { title: "Anasayfa" });
+const anaSayfa = function (req, res) {
+  res.render("anasayfa", {
+    baslik: "Ana Sayfa",
+    sayfaBaslik: {
+      siteAd: "MekanBul",
+      slogan: "Civardaki Mekanları Keşfet!",
+    },
+    mekanlar: [
+      {
+        ad: "Starbucks",
+        adres: "Centrum Garden",
+        puan: "4",
+        imkanlar: ["Dünya Kahveleri", "Kekler", "Pastalar"],
+        mesafe: "100m",
+      },
+      {
+        ad: "Gloria Jeans",
+        adres: "Sdü Doğu Kampüsü",
+        puan: "3",
+        imkanlar: ["Kahve", "Çay", "Pasta"],
+        mesafe: "5km",
+      },
+    ],
+  });
 };
 
-const mekanbilgisi = function (req, res, next) {
-  res.render("mekanbilgisi", { title: "Mekan Bilgisi" });
+const mekanBilgisi = function (req, res) {
+  res.render("mekanbilgisi", {
+    baslik: "Mekan Bilgisi",
+    mekanBaslik: "Starbucks",
+    mekanDetay: {
+      ad: "Starbucks",
+      adres: "Centrum Garden AVM",
+      puan: "4",
+      imkanlar: ["Dünya Kahveleri", "Kekler", "Pastalar"],
+      koordinatlar: {
+        enlem: "37.7",
+        boylam: "30.5",
+      },
+      saatler: [
+        {
+          gunler: "Pazartesi-Cuma",
+          acilis: "9:00",
+          kapanis: "23:00",
+          kapali: false,
+        },
+        {
+          gunler: "Cumartesi-Pazar",
+          acilis: "10:00",
+          kapanis: "22:00",
+          kapali: false,
+        },
+      ],
+      yorumlar: [
+        {
+          yorumYapan: "Eren Ergin",
+          puan: "4",
+          tarih: "20 Ekim 2022",
+          yorumMetni: "Fiyatlar çok fazla artmış ama lezzet çok iyi",
+        },
+      ],
+    },
+  });
 };
 
-const yorumekle = function (req, res, next) {
+const yorumEkle = function (req, res, next) {
   res.render("yorumekle", { title: "Yorum Ekle" });
 };
 
 module.exports = {
-  anasayfa,
-  mekanbilgisi,
-  yorumekle,
+  anaSayfa,
+  mekanBilgisi,
+  yorumEkle,
 };
