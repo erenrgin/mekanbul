@@ -6,7 +6,7 @@ db.mekanlar.updateOne({"ad":"Starbucks"},
       "_id": ObjectId(),
       "yorumYapan": "Emir",
       "puan": 5,
-      "yorumMetni": "Kahveler harika",
+      "yorumMetni": "Kahveler iyidi",
       "tarih": new Date()
     }
   }
